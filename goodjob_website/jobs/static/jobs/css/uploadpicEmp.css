@@ -13,6 +13,7 @@
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 30px;
 }
+
 .picbox {
     width:250px;
     height:230px;
@@ -36,4 +37,10 @@
     padding: 5px 10px;
     width: 200px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1)
+}
+
+.picbox2 {
+    width:250px;
+    height:245px;
+    margin-top: 10px;
 }
