@@ -4,9 +4,16 @@
 <div class="container mt-1">
 
 	{% if form.errors %}
-				<div class="alert alert-danger" role="alert">
-					{{form.errors}}
-				</div>
+  <script>
+    swal({
+      title: 'Something went wrong',
+      text: '{{ form.errors|show_error}}',
+      type: "error",
+      timer: 5000,
+      button: false
+    })
+</script>
+					
 				{% endif %}
 				<br>
 				<br>

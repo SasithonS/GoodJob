@@ -24,7 +24,6 @@
                   {% else %}
                   <img src="{% static 'jobs/images/warning.png' %}" id="image_check2"> <p class="btn_check_pic" >ยังไม่ได้ยืนยันตัวตน</p>
                   {% endif %}
-                  
                 </div>
                 <div class="col-7"><br>
                     <form method="post" action="">
@@ -35,7 +34,11 @@
                             <div class="col-5 subject-detail">ชื่อ-สกุล :</div>
                             <div class="col-7 detail">{{user.first_name}}</div>
                             <div class="col-5 subject-detail">ชื่อองค์กร/ร้านค้า:</div>
+                            {% if user.employeruser.name %}
                             <div class="col-7 detail">{{user.employeruser.name}}</div>
+                            {% else %}
+                            <div class="col-7 detail">{{user.last_name}}</div>
+                            {% endif %}
                             <div class="col-5 subject-detail">อีเมล :</div>
                             <div class="col-7 detail">{{user.email}}</div>
                             <div class="col-5 subject-detail">เบอร์โทร :</div>

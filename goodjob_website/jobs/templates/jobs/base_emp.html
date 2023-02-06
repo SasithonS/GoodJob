@@ -64,7 +64,9 @@
 
                 {% else %}
                 {% if not request.user.employeruser.employercheck.identity_pic %}
-                <img class="card-img-top" src="../../../{{ request.user.employeruser.picture}}" id="profileimage_pic">
+                <img class="card-img-top" src="{% static 'jobs/images/Profile.png' %}" id="profileimage_pic">
+                {% elif not request.user.employeruser.employercheck.check_emp%}
+                <img class="card-img-top" src="../../../{{ request.user.employeruser.picture}}" id="profileimage_pic_wait">
                 {% else %}
                 <img class="card-img-top" src="{% static 'jobs/images/Profile.png' %}" id="profileimage">
                 {% endif %}

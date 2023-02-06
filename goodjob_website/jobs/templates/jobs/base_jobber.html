@@ -58,7 +58,9 @@
 
                   {% else %}
                   {% if not request.user.jobberuser.jobbercheck.identity_pic %}
-                  <img class="card-img-top" src="../../../{{ request.user.jobberuser.picture}}" id="profileimage_pic">
+                  <img class="card-img-top" src="{% static 'jobs/images/Profile.png' %}" id="profileimage_pic">
+                  {% elif not request.user.jobberuser.jobbercheck.check_jobber %}
+                  <img class="card-img-top" src="{% static 'jobs/images/Profile.png' %}" id="profileimage_pic_wait">
                   {% else %}
                   <img class="card-img-top" src="{% static 'jobs/images/Profile.png' %}" id="profileimage">
                   {% endif %}

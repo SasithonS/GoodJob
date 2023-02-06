@@ -11,13 +11,13 @@ class JobberUserAdmin(admin.ModelAdmin):
 class EmployerUserAdmin(admin.ModelAdmin):
     list_display = ['user','name','emp_name' ,'email','phone','address', 'province']
     ordering = ['user','name','emp_name','email','phone','address','province']
-    search_fields = ['user','name','emp_name','email','phone','address','province__province']
+    search_fields = ['name','emp_name','email','province__province']
 
 @admin.register(AdminUser)
 class AdminUserAdmin(admin.ModelAdmin):
     list_display = ['user','name','email']
     ordering = ['user','name','email']
-    search_fields = ['user','name','email']
+    search_fields = ['name','email','email','province__province']
 
 @admin.register(JobberCheck)
 class JobberCheckAdmin(admin.ModelAdmin):

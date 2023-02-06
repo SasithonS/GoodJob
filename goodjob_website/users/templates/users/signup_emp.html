@@ -1,57 +1,88 @@
-{% extends 'jobs/base_emp.html' %}
+{% extends 'jobs/base.html' %}
 {% load static %}
-{% block content %} 
-  {% for user in users %} 
-    <center>
-        <div class="container" id="header-detail">ข้อมูลของฉัน</div><br>
-          <div class="d-flex justify-content-center">
-            <div class="user_card5 mb-5">
-              <div class="d-flex justify-content-center" id="jobber_form">
-                <div class="col-8"><br>
-                <form method="post" action="" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        <div class="container mb-3">
-                          <input type="text" required name="username" class="form-control" id="username" value="{{user.username}}" placeholder="ชื่อผู้ใช้">
-                        </div>
-                        <div class="container mb-3">
-                          <input type="text" required name="name" class="form-control" id="name" value="{{user.first_name}}" placeholder="ชื่อ-สกุล">
-                        </div>
-                        <div class="container mb-3">
-                          <input type="text" required name="emp_name" class="form-control" id="emp_name" value="{{user.employeruser.name}}" placeholder="ชื่อองค์กร/ร้านค้า">
-                        </div>
-                        <div class="container mb-3">
-                          <input type="text" required name="email" class="form-control" id="email" value="{{user.email}}" placeholder="อีเมล">
-                        </div>
-                        <div class="container mb-3">
-                          <input type="text" required name="phone" class="form-control" id="phone" value="{{user.employeruser.phone}}" placeholder="เบอร์โทร">
-                        </div>
-                        <div class="container mb-3">
-                          <select class="form-control" aria-label="Province" name="province" id="province" required>
-                            {% if user.employeruser.province %}
-                            <option selected>{{user.employeruser.province}}</option>
-                            {% else %}
-                            <option selected disabled>จังหวัด</option>
-                            {% endif %}
-                            {% for pv in province %}
-                            <option value="{{pv.province}}">{{pv.province}}</option>
-                            {% endfor %}
-                          </select>
-                        </div>
-                        <div class="container mb-3">
-                          <input type="text" required name="address" class="form-control" id="address" value="{{user.employeruser.address}}" placeholder="ที่อยู่">
-                        </div>
-                        <div class="container mb-3">
-                          <!-- <div class="col-5 subject-detail" ><img src="../../static/jobs/images/Pin_alt_fill.png" width="35px"></div> -->
-                          <input type="text"  name="location" class="form-control" id="location" value="{{user.employeruser.location}}" placeholder="ที่ตั้ง">
-                        </div>
-                        <div class="container mb-3">
-                          <input type="file" required name="picture" class="form-control" id="picture" value="{{user.employeruser.picture}}">
-                        </div>
-                          <input class="btn apply_btn" type="submit" value="แก้ไขข้อมูล"> <a class="btn btn-secondary" type="button" href="{% url 'emp_profile' user.id %}">ยกเลิก</a>
-            </form>
-          </div></div>
-          </div>    
-          </div>
-    </center>   
-  {%endfor%}
+{% block content %}
+<div class="container mt-1">
+
+	{% if form.errors %}
+  <script>
+    swal({
+      title: 'Something went wrong',
+      text: '{{ form.errors|show_error}}',
+      type: "error",
+      timer: 5000,
+      button: false
+    })
+</script>	
+				{% endif %}
+				<br>
+				<br>
+    <div class="d-flex justify-content-center">
+			<div class="user_card2"><br>
+				<div class="d-flex justify-content-center ">
+					<h3 id="form-title">สร้างบัญชีผู้จ้างงาน</h3>
+				</div>
+				
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="" id="signup_form">
+						{% csrf_token %}
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							{{ form.username }}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							{{ form.first_name }}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-home"></i></span>
+							</div>
+							{{ form.last_name }}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+							</div>
+							{{ form.email }}
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							{{ form.password1 }}
+							
+						</div>
+						<div class="input-group mb-2">
+							<div class="input-group-append">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							{{ form.password2 }}
+						</div>
+				   		<div class="d-flex justify-content-center mt-4 login_container">
+				 			<input class="btn login_btn" type="submit" value="ลงทะเบียน">
+				   		</div>
+					</form>
+				</div>
+				<br>
+			</div>
+		</div>
+</div>
+<script>
+	var form_fields = document.getElementsByTagName('input')
+	form_fields[1].placeholder='บัญชีผู้ใช้';
+	form_fields[2].placeholder='ชื่อ-สกุล';
+  form_fields[3].placeholder='ชื่อร้าน/องค์กร';
+	form_fields[4].placeholder='อีเมล';
+	form_fields[5].placeholder='รหัสผ่าน';
+	form_fields[6].placeholder='ยืนยันรหัสผ่าน';
+
+
+	for (var field in form_fields){	
+		form_fields[field].className += ' form-control'
+	}
+</script>
 {% endblock %}
