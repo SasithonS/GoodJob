@@ -2,13 +2,13 @@
 {% load static %}
 
 {% block content %}
-{% if jobs_searched %}
+{% if searched %}
 <div class="col">
     <div class="row" id="headerhome">Are You Looking For a Good Job ?</div>
     <div class="row" id="sub-header">ค้นหางานพาร์ทไทม์ง่ายๆ ได้ที่นี่ !</div>
     <br>
     <div class="row" id="search">
-        <form class="d-flex" method="POST" action="{% url 'home_jobber' %}">
+        <form class="d-flex" method="POST" action="{% url 'home_emp' %}">
             {% csrf_token %}
             <input class="form-control" type="search" placeholder="พนักงานขาย" id="search-input" name="searched"
                 value="{{searched}}">
@@ -17,6 +17,7 @@
     </div>
 </div>
 <div>
+    {% if jobs_searched %}
     <table class="table table-hover" id="job-table">
         <tbody>
             {% for jobs in jobs_searched %}
@@ -50,12 +51,21 @@
     </table>
 </div>
 {% else %}
+<br>
+<div class="d-flex justify-content-center my-3">
+    <img class="picbox2" src="../../static/jobs/images/no-search.png">
+</div>
+<div class="d-flex justify-content-center mt-3">
+    <p id="text-body">ไม่พบผลการค้นหา</p>
+</div>
+{% endif %}
+{% else %}
 <div class="col">
     <div class="row" id="headerhome">Are You Looking For a Good Job ?</div>
     <div class="row" id="sub-header">ค้นหางานพาร์ทไทม์ง่ายๆ ได้ที่นี่ !</div>
     <br>
     <div class="row" id="search">
-        <form class="d-flex" method="POST" action="{% url 'home' %}">
+        <form class="d-flex" method="POST" action="{% url 'home_emp' %}">
             {% csrf_token %}
             <input class="form-control" type="search" placeholder="พนักงานขาย" id="search-input" name="searched"
                 value="">

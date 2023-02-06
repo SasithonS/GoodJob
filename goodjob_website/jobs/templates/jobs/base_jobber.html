@@ -68,10 +68,10 @@
                   <a class="dropdown-item" id="dropdown" href="{% url 'jobber_profile' id=request.user.id %}">ข้อมูลของฉัน</a>
                   {% if not request.user.jobberuser.jobbercheck.identity_pic %}
                   <a class="dropdown-item" id="dropdown" href="{% url 'jobber_check' id=request.user.id %}">ยืนยันตัวตน</a>
-                  {% endif %}
+                  {% elif request.user.jobberuser.jobbercheck.check_jobber %}
                   <a class="dropdown-item" id="dropdown" href="{% url 'myjobs_jobber' id=request.user.id %}">งานของฉัน</a>
                   <a class="dropdown-item" id="dropdown" href="#">งานใกล้ฉัน</a>
-                  {% if request.user.jobberuser.hasjob %}
+                  {% elif request.user.jobberuser.hasjob %}
                   <a class="dropdown-item" id="dropdown" href="{% url 'jobber_complain' %}">เขียนคำร้อง</a>
                   <div class="dropdown-divider"></div>
                   {% endif %}

@@ -10,8 +10,11 @@ def home(request):
     jobs_list = Job.objects.all()
     if request.method == "POST":
         searched = request.POST.get('searched','')
-        jobs_searched = Job.objects.filter(name__contains=searched)
-        return render(request, 'jobs/home.html', {'searched':searched,'jobs_searched': jobs_searched})
+        if searched != '':
+            jobs_searched = Job.objects.filter(name__contains=searched)
+            return render(request, 'jobs/home.html', {'searched':searched,'jobs_searched': jobs_searched})
+        else:
+            return render(request, 'jobs/home.html', {'jobs_list': jobs_list})
     else:
         return render(request, 'jobs/home.html', {'jobs_list': jobs_list})
 
@@ -24,8 +27,11 @@ def home_jobber(request):
     jobs_list = Job.objects.filter(apply=False)
     if request.method == "POST":
         searched = request.POST.get('searched','')
-        jobs_searched = Job.objects.filter(name__contains=searched)
-        return render(request, 'jobs/home_jobber.html', {'searched':searched,'jobs_searched': jobs_searched})
+        if searched != '':
+            jobs_searched = Job.objects.filter(name__contains=searched)
+            return render(request, 'jobs/home_jobber.html', {'searched':searched,'jobs_searched': jobs_searched})
+        else:
+            return render(request, 'jobs/home_jobber.html', {'jobs_list': jobs_list})
     else:
         return render(request, 'jobs/home_jobber.html', {'jobs_list': jobs_list})
 
@@ -217,8 +223,11 @@ def home_emp(request):
     jobs_list = Job.objects.filter(apply=False)
     if request.method == "POST":
         searched = request.POST.get('searched','')
-        jobs_searched = Job.objects.filter(name__contains=searched)
-        return render(request, 'jobs/home_emp.html', {'searched':searched,'jobs_searched': jobs_searched})
+        if searched != '':
+            jobs_searched = Job.objects.filter(name__contains=searched)
+            return render(request, 'jobs/home_emp.html', {'searched':searched,'jobs_searched': jobs_searched})
+        else:
+            return render(request, 'jobs/home_emp.html', {'jobs_list': jobs_list})
     else:
         return render(request, 'jobs/home_emp.html', {'jobs_list': jobs_list})
 
