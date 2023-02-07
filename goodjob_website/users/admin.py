@@ -5,7 +5,7 @@ from .models import *
 class JobberUserAdmin(admin.ModelAdmin):
     list_display = ['user','name', 'email','phone','address', 'province','hasjob']
     ordering = ['user','name','email','phone','address','province','hasjob']
-    search_fields = ['name','email','province__province','hasjob']
+    search_fields = ['name','email','province__province']
 
 @admin.register(EmployerUser)
 class EmployerUserAdmin(admin.ModelAdmin):
@@ -21,8 +21,8 @@ class AdminUserAdmin(admin.ModelAdmin):
 
 @admin.register(JobberCheck)
 class JobberCheckAdmin(admin.ModelAdmin):
-    list_display = ['jobber','gender','identity_pic','check_jobber']
-    ordering = ['jobber','gender','identity_pic','check_jobber']
+    list_display = ['jobber','identity_pic','check_jobber']
+    ordering = ['jobber','identity_pic','check_jobber']
     search_fields = ['jobber']
 
 @admin.register(EmployerCheck)
@@ -47,10 +47,10 @@ class ApplyJobAdmin(admin.ModelAdmin):
 class JobberComplainAdmin(admin.ModelAdmin):
     list_display = ['job','jobber','emp_name','subject','complain_date','status']
     ordering = ['job','jobber','emp_name','subject','complain_date','status',]
-    search_fields = ['job','jobber','emp_name','subject']
+    search_fields = ['job','jobber','emp_name']
 
 @admin.register(EmployerComplain)
 class EmployerComplainAdmin(admin.ModelAdmin):
     list_display = ['job','jobber','emp_name','subject','complain_date','status']
     ordering = ['job','jobber','emp_name','subject','complain_date','status']
-    search_fields = ['job','jobber','emp_name','subject']
+    search_fields = ['job','jobber','emp_name']

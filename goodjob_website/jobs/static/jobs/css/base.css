@@ -76,3 +76,23 @@
     font-family: 'Mitr';
     font-weight: lighter;
 }
+#ex {
+    
+    font-family: 'Mitr';
+    font-size: 14px;
+}
+
+#note {
+    color: red;
+    font-family: 'Mitr';
+    text-align: left;
+    font-size: 14px;
+}
+
+#eximage {
+    width: 140px;
+    height: 130px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1)
+}

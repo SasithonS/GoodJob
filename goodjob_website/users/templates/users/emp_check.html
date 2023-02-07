@@ -15,9 +15,18 @@
                           <input type="text" name="name" class="form-control" id="name" value="{{user.first_name}}" placeholder="ชื่อ-สกุล" disabled>
                         </div>
                         <div class="container mb-3">
+                          <p id="ex">ตัวอย่าง การถ่ายรูปหน้าตรงคู่บัตรประชาชนเพื่อยืนยันตัวตน</p>
+                        </div>
+                        <div class="container mb-3">
+                          <img src="{% static 'jobs/images/identitycard.jpeg' %}" id="eximage">
+                        </div>
+                        <div class="container mb-3">
                           <input type="file" required name="picture" class="form-control" id="picture">
                         </div>
-                          <input class="btn apply_btn" type="submit" value="ยืนยันตัวตน"> <a class="btn btn-secondary" type="button" href="{% url 'home_emp'%}">ยกเลิก</a>
+                        <div class="container mb-3">
+                          <p id="note">หมายเหตุ: กรุณากรอกข้อมูลของคุณให้ครบถ้วนเพื่อความ<br>&emsp;&emsp;&emsp;&emsp;&nbsp;รวดเร็วในการตรวจสอบข้อมูล</p>
+                        </div>
+                          <input class="btn check_btn2" type="submit" value="ยืนยันตัวตน">
             </form>
           </div></div>
           </div>    

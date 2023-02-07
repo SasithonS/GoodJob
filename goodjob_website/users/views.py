@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import CreateUserForm, CreateEmpUserForm
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
 from .models import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -86,7 +85,7 @@ def signup_emp(request):
             form = CreateEmpUserForm(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('login',messages)
+                return redirect('login')
         context = {'form': form}
         return render(request, 'users/signup_emp.html', context)
 
@@ -156,17 +155,15 @@ def jobber_update(request,id):
 @login_required(login_url='login')
 def jobber_check(request,id):
     users = User.objects.filter(id=id)
-    gender = Gender.objects.all()
     if request.method == 'POST':
         user = User.objects.get(id=id)
         jobber_check = JobberCheck()
         jobber_check.jobber = JobberUser.objects.get(name=user.first_name)
-        jobber_check.gender =  Gender.objects.get(gender=request.POST.get('gender'))
         jobber_check.identity_pic = request.FILES['picture']
         jobber_check.save()
         return redirect('jobber_profile',id=id)
 
-    context = {'users': users,'gender':gender}
+    context = {'users': users}
     return render(request, 'users/jobber_check.html', context)
 
 
@@ -177,7 +174,7 @@ def emp_check(request,id):
     if request.method == 'POST':
         user = User.objects.get(id=id)
         employer_check = EmployerCheck()
-        employer_check.employer = EmployerUser.objects.get(user=id)
+        employer_check.employer = EmployerUser.objects.get(user=user)
         employer_check.identity_pic = request.FILES['picture']
         employer_check.save()
         return redirect('emp_profile',id=id)

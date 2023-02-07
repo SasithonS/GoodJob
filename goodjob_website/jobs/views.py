@@ -71,7 +71,7 @@ def job_apply(request,job_id):
         job_apply.job = Job.objects.get(id=job_id)
         job_apply.jobber = JobberUser.objects.get(user_id=request.user.id)
         job_apply.emp_name = EmployerUser.objects.get(name=jobbb.emp_name)
-        message = str("ร้าน \n"+str(request.user.first_name)+" : "+str(jobbb.name))
+        message = +str(request.user.first_name)+" : "+str(jobbb.name)
         title = str(str(request.user.username)+str(job_id))
         pic = generate_qr(message,title)
         job_apply.picture = pic

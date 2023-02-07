@@ -65,7 +65,6 @@ class Job(models.Model):
 
 class JobberCheck(models.Model):
     jobber = models.OneToOneField(JobberUser, on_delete=models.CASCADE, primary_key=True,verbose_name='ผู้หางาน')
-    gender = models.ForeignKey(Gender, on_delete=models.CASCADE,verbose_name='เพศ',null=True, blank=True)
     identity_pic = models.FileField('หลักฐานยืนยันตัวตน',null=True, blank=True, upload_to='jobs/static/jobs/images/identity/Employer/')
     check_jobber = models.BooleanField('ตรวจสอบ',default=False)
 

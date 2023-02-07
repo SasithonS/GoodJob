@@ -100,6 +100,17 @@
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1)
 }
 
+.check_btn2 {
+    font-family: 'Mitr';
+    background-color: #7098DA;
+    border-radius: 25px;
+    font-weight: bold;
+    color: white;
+    padding: 5px 10px;
+    width: 200px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1)
+}
+
 .edit_btn {
     font-family: 'Mitr';
     background-color: #7098DA;
