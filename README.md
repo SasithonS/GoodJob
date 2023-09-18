@@ -1,1 +1,1 @@
-# GoodJobXYZ123
+# GoodJob
